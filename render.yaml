@@ -1,4 +1,4 @@
-# Exported from Render on 2025-07-13T00:02:27Z
+# Exported from Render on 2025-07-13T08:45:55Z
 databases:
 - name: postn8ngrace
   databaseName: postn8ngrace
@@ -9,4 +9,45 @@ databases:
   - source: 0.0.0.0/0
     description: everywhere
   postgresMajorVersion: "16"
+services:
+- type: web
+  name: n8n:latest
+  runtime: image
+  image:
+    url: docker.io/n8nio/n8n:latest
+  plan: free
+  envVars:
+  - key: N8N_BASIC_AUTH_PASSWORD
+    sync: true
+  - key: N8N_BASIC_AUTH_USER
+    sync: true
+  - key: N8N_ENCRYPTION_KEY
+    sync: true
+  - key: N8N_EMAIL_MODE
+    sync: true
+  - key: N8N_LOG_LEVEL
+    sync: true
+  - key: N8N_BASIC_AUTH_PASSWORD
+    sync: true
+  - key: N8N_BASIC_AUTH_USER
+    sync: true
+  - key: N8N_BASIC_AUTH_ACTIVE
+    sync: true
+  - key: N8N_PERSONALIZATION_ENABLED
+    sync: false
+  - key: N8N_HOST
+    sync: true
+  - key: N8N_PATH
+    sync: true
+  - key: N8N_USER_FOLDER
+    sync: true
+  - key: N8N_TEMPLATES_ENABLED
+    sync: true
+  - key: N8N_EDITOR_BASE_URL
+    sync: true
+  - key: Port
+    sync: true
+  - fromGroup: n8nenv
+  region: oregon
+  autoDeployTrigger: commit
 version: "1"
